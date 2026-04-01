@@ -76,6 +76,18 @@ html {
 .nav-links a:hover {
   color: #0077cc;
 }
+body.dark-mode {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.dark-mode .navbar {
+  background-color: #020617;
+}
+
+.dark-mode .card {
+  background-color: #1e293b;
+}
 
 /* HERO */
 .hero {
