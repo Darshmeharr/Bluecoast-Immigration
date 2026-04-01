@@ -23,6 +23,12 @@ document.querySelectorAll('.smooth-scroll').forEach(link => {
   });
 });
 
+const toggle = document.getElementById("darkModeToggle");
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
 // FORM MESSAGE
 const form = document.getElementById("appointment-form");
 const formMsg = document.getElementById("form-message");
