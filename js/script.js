@@ -1,4 +1,6 @@
+// =========================
 // TABS
+// =========================
 const tabs = document.querySelectorAll(".tab");
 const contents = document.querySelectorAll(".tab-content");
 
@@ -12,31 +14,57 @@ tabs.forEach(tab => {
   });
 });
 
+
+// =========================
 // SMOOTH SCROLL
-document.querySelectorAll('.smooth-scroll').forEach(link => {
-  link.addEventListener('click', function (e) {
+// =========================
+document.querySelectorAll(".smooth-scroll").forEach(link => {
+  link.addEventListener("click", function (e) {
     e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
+    const target = document.querySelector(this.getAttribute("href"));
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      target.scrollIntoView({ behavior: "smooth" });
     }
   });
 });
 
+
+// =========================
+// DARK MODE (FIXED + SAVED)
+// =========================
 const toggle = document.getElementById("darkModeToggle");
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
+if (toggle) {
+  // Load saved preference
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark-mode");
+    toggle.textContent = "☀️";
+  }
 
-// FORM MESSAGE
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+      localStorage.setItem("darkMode", "enabled");
+      toggle.textContent = "☀️";
+    } else {
+      localStorage.setItem("darkMode", "disabled");
+      toggle.textContent = "🌙";
+    }
+  });
+}
+
+
+// =========================
+// FORM MESSAGE (MAILTO FRIENDLY)
+// =========================
 const form = document.getElementById("appointment-form");
 const formMsg = document.getElementById("form-message");
 
 if (form) {
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    formMsg.textContent = "Thank you! Your request has been received.";
-    form.reset();
+  form.addEventListener("submit", () => {
+    if (formMsg) {
+      formMsg.textContent = "Opening your email client...";
+    }
   });
 }
